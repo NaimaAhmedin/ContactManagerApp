@@ -1,0 +1,28 @@
+﻿@using System.Security.Claims
+@model ContactManagerApp.Models.Contact
+<body style="background-color: black; color: white;">
+    <form asp-action="AddContact" method="post" style="color: #04FFFB;" style="width=300px">
+    <div class="form-group">
+        <label asp-for="FirstName" ></label>
+        <input asp-for="FirstName" class="form-control my-2"  />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control my-2" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control my-2" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" class="form-control my-2" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="ApplicationUserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+    <button type="submit" class="btn btn-info my-3">Add Contact</button>
+</form>
+</body>

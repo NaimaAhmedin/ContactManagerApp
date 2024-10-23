@@ -1,0 +1,27 @@
+﻿@model ContactManagerApp.Models.UserRolesViewModel
+
+@{
+    ViewData["Title"] = "User Details";
+}
+<body style="background-color: black; color: white;">
+<h2 style="color: #04FFFB;">@ViewData["Title"]</h2>
+
+<div class="card bg-dark" >
+    <div class="card-header">
+        <h3>@Model.FirstName @Model.LastName</h3>
+    </div>
+    <div class="card-body">
+            <p><span style="color: #04FFFB;">Email:</span> @Model.Email</p>
+            <p><span style="color: #04FFFB;">Roles:</span></p>
+        <ul>
+            @foreach (var role in Model.Roles)
+            {
+                <li>@role</li>
+            }
+        </ul>
+        <a asp-action="ManageUserRoles" asp-route-id="@Model.UserId" class="btn btn-info">Manage Roles</a>
+    </div>
+</div>
+
+<a asp-action="Dashboard" class="btn btn-info mt-3">Back to Dashboard</a>
+</body>

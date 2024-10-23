@@ -1,0 +1,29 @@
+﻿@model List<SelectContactViewModel>
+
+<form asp-action="SendInvitations" method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" asp-for="@contact.IsSelected" />
+                        <input type="hidden" asp-for="@contact.ContactId" />
+                    </td>
+                    <td>@contact.FirstName</td>
+                    <td>@contact.LastName</td>
+                    <td>@contact.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Send Invitations</button>
+</form>

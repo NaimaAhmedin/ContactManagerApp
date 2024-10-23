@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ContactManagerApp.Models.Contact>
+
+@{
+    ViewData["Title"] = "My Contacts";
+}
+
+<body style="background-color: black; color: white;">
+    <h1 style="color: #04FFFB;">Contact List</h1>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success">@TempData["Message"]</div>
+    }
+
+    <a href="@Url.Action("AddContact")" class="btn btn-outline-info my-3">Add Contact</a>
+
+    <form asp-action="SendInvitations" method="post">
+        <table class="table" style="background-color: #333; color: white;">
+            <thead>
+                <tr style="color: #04FFFB;">
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var contact in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="selectedContacts" value="@contact.Id" />
+                        </td>
+                        <td>@contact.FirstName @contact.LastName</td>
+                        <td>@contact.Email</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@contact.Id" style="color: #04FFFB;">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@contact.Id" style="color: #04FFFB;">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@contact.Id" style="color: #04FFFB;">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-success">Send Invitations</button>
+    </form>
+</body>

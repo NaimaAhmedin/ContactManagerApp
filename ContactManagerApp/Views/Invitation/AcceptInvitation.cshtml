@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Invitation Accepted";
+    var contact = ViewBag.Contact as Contact;
+    var invitedBy = ViewBag.InvitedBy as string;
+}
+
+<h2>Invitation Accepted</h2>
+
+<p>Hi @contact.FirstName,</p>
+
+<p>You've been invited by @invitedBy.</p>
+
+<p>Here are your contact details:</p>
+<ul>
+    <li>Full Name: @contact.FirstName @contact.LastName</li>
+    <li>Email: @contact.Email</li>
+    <li>Phone Number: @contact.PhoneNumber</li>
+</ul>
+
+<p>Thank you for accepting the invitation! We look forward to connecting with you.</p>

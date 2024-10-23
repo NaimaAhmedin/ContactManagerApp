@@ -1,0 +1,15 @@
+﻿@model ContactManagerApp.Models.UserRolesViewModel
+
+@{
+    ViewData["Title"] = "Delete User";
+}
+<body style="background-color: black; color: white;">
+<h2 style="color: #04FFFB;">@ViewData["Title"]</h2>
+
+<p style="color: #04FFFB;">Are you sure you want to delete the user <strong>@Model.FirstName @Model.LastName</strong>?</p>
+
+<form asp-action="DeleteUser" asp-route-id="@Model.UserId" method="post">
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Dashboard" class="btn btn-info">Cancel</a>
+</form>
+</body>
